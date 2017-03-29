@@ -4,7 +4,7 @@
 
 Python内置的`sorted()`函数就可以对list进行排序：
 
-```
+```python
 >>> sorted([36, 5, 12, 9, 21])
 [5, 9, 12, 21, 36]
 
@@ -12,7 +12,7 @@ Python内置的`sorted()`函数就可以对list进行排序：
 
 此外，`sorted()`函数也是一个高阶函数，它还可以接收一个比较函数来实现自定义的排序。比如，如果要倒序排序，我们就可以自定义一个`reversed_cmp`函数：
 
-```
+```python
 def reversed_cmp(x, y):
     if x > y:
         return -1
@@ -24,7 +24,7 @@ def reversed_cmp(x, y):
 
 传入自定义的比较函数`reversed_cmp`，就可以实现倒序排序：
 
-```
+```python
 >>> sorted([36, 5, 12, 9, 21], reversed_cmp)
 [36, 21, 12, 9, 5]
 
@@ -32,7 +32,7 @@ def reversed_cmp(x, y):
 
 我们再看一个字符串排序的例子：
 
-```
+```python
 >>> sorted(['bob', 'about', 'Zoo', 'Credit'])
 ['Credit', 'Zoo', 'about', 'bob']
 
@@ -42,7 +42,7 @@ def reversed_cmp(x, y):
 
 现在，我们提出排序应该忽略大小写，按照字母序排序。要实现这个算法，不必对现有代码大加改动，只要我们能定义出忽略大小写的比较算法就可以：
 
-```
+```python
 def cmp_ignore_case(s1, s2):
     u1 = s1.upper()
     u2 = s2.upper()
@@ -58,7 +58,7 @@ def cmp_ignore_case(s1, s2):
 
 这样，我们给`sorted`传入上述比较函数，即可实现忽略大小写的排序：
 
-```
+```python
 >>> sorted(['bob', 'about', 'Zoo', 'Credit'], cmp_ignore_case)
 ['about', 'bob', 'Credit', 'Zoo']
 

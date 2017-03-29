@@ -8,7 +8,7 @@ Python提供了`__future__`模块，把下一个新版本的特性导入到当�
 
 为了适应Python 3.x的新的字符串的表示方法，在2.7版本的代码中，可以通过`unicode_literals`来使用Python 3.x的新的语法：
 
-```
+```python
 # still running on Python 2.7
 
 from __future__ import unicode_literals
@@ -22,7 +22,7 @@ print 'b\'xxx\' is str?', isinstance(b'xxx', str)
 
 注意到上面的代码仍然在Python 2.7下运行，但结果显示去掉前缀`u`的`'a string'`仍是一个unicode，而加上前缀`b`的`b'a string'`才变成了str：
 
-```
+```python
 $ python task.py
 'xxx' is unicode? True
 u'xxx' is unicode? True
@@ -33,7 +33,7 @@ b'xxx' is str? True
 
 类似的情况还有除法运算。在Python 2.x中，对于除法有两种情况，如果是整数相除，结果仍是整数，余数会被扔掉，这种除法叫“地板除”：
 
-```
+```python
 >>> 10 / 3
 3
 
@@ -41,7 +41,7 @@ b'xxx' is str? True
 
 要做精确除法，必须把其中一个数变成浮点数：
 
-```
+```python
 >>> 10.0 / 3
 3.3333333333333335
 
@@ -49,9 +49,9 @@ b'xxx' is str? True
 
 而在Python 3.x中，所有的除法都是精确除法，地板除用`//`表示：
 
-```
+```python
 $ python3
-Python 3.3.2 (default, Jan 22 2014, 09:54:40) 
+Python 3.3.2 (default, Jan 22 2014, 09:54:40)
 [GCC 4.2.1 Compatible Apple LLVM 5.0 (clang-500.2.79)] on darwin
 Type "help", "copyright", "credits" or "license" for more information.
 >>> 10 / 3
@@ -63,7 +63,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 如果你想在Python 2.7的代码中直接使用Python 3.x的除法，可以通过`__future__`模块的`division`实现：
 
-```
+```python
 from __future__ import division
 
 print '10 / 3 =', 10 / 3
@@ -74,7 +74,7 @@ print '10 // 3 =', 10 // 3
 
 结果如下：
 
-```
+```python
 10 / 3 = 3.33333333333
 10.0 / 3 = 3.33333333333
 10 // 3 = 3

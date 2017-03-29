@@ -1,6 +1,6 @@
 在绑定属性时，如果我们直接把属性暴露出去，虽然写起来很简单，但是，没办法检查参数，导致可以把成绩随便改：
 
-```
+```python
 s = Student()
 s.score = 9999
 
@@ -8,7 +8,7 @@ s.score = 9999
 
 这显然不合逻辑。为了限制score的范围，可以通过一个`set_score()`方法来设置成绩，再通过一个`get_score()`来获取成绩，这样，在`set_score()`方法里，就可以检查参数：
 
-```
+```python
 class Student(object):
 
     def get_score(self):
@@ -25,7 +25,7 @@ class Student(object):
 
 现在，对任意的Student实例进行操作，就不能随心所欲地设置score了：
 
-```
+```python
 >>> s = Student()
 >>> s.set_score(60) # ok!
 >>> s.get_score()
@@ -43,7 +43,7 @@ ValueError: score must between 0 ~ 100!
 
 还记得装饰器（decorator）可以给函数动态加上功能吗？对于类的方法，装饰器一样起作用。Python内置的`@property`装饰器就是负责把一个方法变成属性调用的：
 
-```
+```python
 class Student(object):
 
     @property
@@ -62,7 +62,7 @@ class Student(object):
 
 `@property`的实现比较复杂，我们先考察如何使用。把一个getter方法变成属性，只需要加上`@property`就可以了，此时，`@property`本身又创建了另一个装饰器`@score.setter`，负责把一个setter方法变成属性赋值，于是，我们就拥有一个可控的属性操作：
 
-```
+```python
 >>> s = Student()
 >>> s.score = 60 # OK，实际转化为s.set_score(60)
 >>> s.score # OK，实际转化为s.get_score()
@@ -78,7 +78,7 @@ ValueError: score must between 0 ~ 100!
 
 还可以定义只读属性，只定义getter方法，不定义setter方法就是一个只读属性：
 
-```
+```python
 class Student(object):
 
     @property
