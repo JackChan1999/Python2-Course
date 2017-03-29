@@ -4,7 +4,6 @@
 >>> class Student(object):
 ...     pass
 ...
-
 ```
 
 然后，尝试给实例绑定一个属性：
@@ -14,7 +13,6 @@
 >>> s.name = 'Michael' # 动态给实例绑定一个属性
 >>> print s.name
 Michael
-
 ```
 
 还可以尝试给实例绑定一个方法：
@@ -28,7 +26,6 @@ Michael
 >>> s.set_age(25) # 调用实例方法
 >>> s.age # 测试结果
 25
-
 ```
 
 但是，给一个实例绑定的方法，对另一个实例是不起作用的：
@@ -39,7 +36,6 @@ Michael
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 AttributeError: 'Student' object has no attribute 'set_age'
-
 ```
 
 为了给所有实例都绑定方法，可以给class绑定方法：
@@ -49,7 +45,6 @@ AttributeError: 'Student' object has no attribute 'set_age'
 ...     self.score = score
 ...
 >>> Student.set_score = MethodType(set_score, None, Student)
-
 ```
 
 给class绑定方法后，所有实例均可调用：
@@ -61,7 +56,6 @@ AttributeError: 'Student' object has no attribute 'set_age'
 >>> s2.set_score(99)
 >>> s2.score
 99
-
 ```
 
 通常情况下，上面的`set_score`方法可以直接定义在class中，但动态绑定允许我们在程序运行的过程中动态给class加上功能，这在静态语言中很难实现。
@@ -76,7 +70,6 @@ AttributeError: 'Student' object has no attribute 'set_age'
 >>> class Student(object):
 ...     __slots__ = ('name', 'age') # 用tuple定义允许绑定的属性名称
 ...
-
 ```
 
 然后，我们试试：
@@ -89,7 +82,6 @@ AttributeError: 'Student' object has no attribute 'set_age'
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 AttributeError: 'Student' object has no attribute 'score'
-
 ```
 
 由于`'score'`没有被放到`__slots__`中，所以不能绑定`score`属性，试图绑定`score`将得到AttributeError的错误。
@@ -102,7 +94,6 @@ AttributeError: 'Student' object has no attribute 'score'
 ...
 >>> g = GraduateStudent()
 >>> g.score = 9999
-
 ```
 
 除非在子类中也定义`__slots__`，这样，子类允许定义的属性就是自身的`__slots__`加上父类的`__slots__`。
