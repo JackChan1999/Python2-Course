@@ -5,6 +5,12 @@
     "language": "zh-hans",
     "title": "Python开发教程",
     "pdf": {
-        "fontFamily": "Microsoft YaHei"
-    }
+        "fontFamily": "sans"
+    },
+
+    "fontState": {
+    "size": "2",
+    "family": "sans",
+    "theme": "night"
+  }
 }
