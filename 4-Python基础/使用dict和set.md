@@ -214,3 +214,17 @@ set和dict的唯一区别仅在于没有存储对应的value，但是，set的�
 使用key-value存储结构的dict在Python中非常有用，选择不可变对象作为key很重要，最常用的key是字符串。
 
 tuple虽然是不变对象，但试试把`(1, 2, 3)`和`(1, [2, 3])`放入dict或set中，并解释结果。
+
+### dict
+
+- 双列集合，java中的map，key不可变
+- get()
+- pop()
+- iteritems()
+- itervalues()
+
+### set
+
+- 单列集合，无序唯一
+- add()
+- remove()

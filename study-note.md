@@ -47,9 +47,13 @@ tab代码补全
 
 ## 输入输出
 
-print
+print()
 
 raw_input()
+
+input()
+
+Ctrl+C 退出程序
 
 ## 变量
 
@@ -62,6 +66,7 @@ global，id()
 5. del语句可以直接释放资源，变量名删除，引用计数减1。
 6. 变量内存自动管理回收,垃圾收集。
 7. 指定编码在文件开头加入 # coding:UTF8或者 #coding=utf8
+8. 变量本身类型不固定的语言称之为动态语言
 
 ```python
 >>> a = 12 #无需定义，直接使用，python解释器根据右值决定左侧类型
@@ -121,11 +126,35 @@ NameError: name 'a' is not defined
 
 获取变量的数据类型 type(var_name)
 
+### 字符串
+
+r'' 表示 '' 内部的字符串默认不转义
+
+'''...''' 的格式表示多行内容
+
+编码：
+
+Unicode u'...'
+
+“可变长编码”的 UTF-8
+
+\# coding = utf-8
+
+ord() , chr() , encode() , decode()
+
+len()
+
+格式化 %s %d
+
 ## 数据类型
 
 整数
 
+### 类型转换
+
 int()
+
+isinstance()
 
 空值None
 
@@ -144,17 +173,18 @@ list
 - sort()
 - reverse()
 
-tuple
+### tuple
 
 - tuple一旦初始化就不能修改
 
-dict(map)
+### dict(map)
 
 - get()
 - pop(key)
 - iteritems()
+- itervalues()
 
-set
+### set
 
 - add()
 - remove()
@@ -206,27 +236,27 @@ Python包含以下方法:
 
 ## 字符串
 
-| 方法声明         |      |
-| ------------ | ---- |
-| find()       |      |
-| index()      |      |
-| count()      |      |
-| decode()     |      |
-| encode       |      |
-| replace()    |      |
-| split()      |      |
-| capitalize() |      |
-| center()     |      |
-| endswith()   |      |
-| startswith() |      |
-| expandtabs() |      |
-| isalnum()    |      |
-| isalpha()    |      |
-| isdigit()    |      |
-| isspace()    |      |
-| istitle()    |      |
-| isupper()    |      |
-| lower()      |      |
+| 方法声明         | 功能说明  |
+| ------------ | ----- |
+| find()       |       |
+| index()      |       |
+| count()      |       |
+| decode()     | 解码    |
+| encode       | 编码    |
+| replace()    | 分割字符串 |
+| split()      |       |
+| capitalize() |       |
+| center()     |       |
+| endswith()   |       |
+| startswith() |       |
+| expandtabs() |       |
+| isalnum()    |       |
+| isalpha()    | 是否是字母 |
+| isdigit()    | 是否是数字 |
+| isspace()    | 是否是空格 |
+| istitle()    |       |
+| isupper()    | 是否是大写 |
+| lower()      | 转成小写  |
 
 ## 时间和日期
 
@@ -287,6 +317,11 @@ range()
 
 ### 常用函数
 
+- type()
+- id()
+- isinstance()
+
+
 - abs()
 - cmp()
 - sum()
@@ -297,12 +332,17 @@ range()
 - list()
 - range()
 - del()
+- enumerate()把一个list变成索引-元素对
+
+### 函数参数
 
 默认参数，默认参数必须指向不变对象
 
 定义函数def，pass
 
-可变参*
+可变参*args
+
+*list *tuple
 
 关键字参数**
 
@@ -310,13 +350,29 @@ range()
 
 ## 高级特性
 
-- 切片L[0:3]
-- 迭代for in , enumerate()
-- 列表生成式range()
-- Generator：()
-  - next()
-  - generator也是可迭代对象
-  - yield
+### 切片
+
+- L[m:n] m到n个
+- L[:n] 前n个
+- L[-n:] 后n个
+- L[-2:-1]
+- L[:10:2]
+- L[::5]
+- L[:]
+
+### 迭代
+
+for in , enumerate()
+
+### 列表生成式
+
+range()
+
+### Generator
+
+- next()
+- generator也是可迭代对象
+- 函数中包含yield
 
 ## 函数式编程
 
@@ -542,9 +598,15 @@ re模块
 
 ## 常用内建模块
 
-collections
+### math
+
+- cos()
+- sin()
+
+### collections
 
 - namedtuple
+- Iterable
 - deque
   - append()
   - appendleft()

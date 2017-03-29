@@ -4,8 +4,7 @@
     "gitbook": "3.2.2",
     "language": "zh-hans",
     "title": "Python开发教程",
-
     "pdf": {
-        "fontFamily": "sans"
+        "fontFamily": "等线"
     }
 }
