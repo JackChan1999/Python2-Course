@@ -4,13 +4,8 @@
     "gitbook": "3.2.2",
     "language": "zh-hans",
     "title": "Python开发教程",
+
     "pdf": {
         "fontFamily": "sans"
-    },
-
-    "fontState": {
-    "size": "2",
-    "family": "sans",
-    "theme": "night"
-  }
+    }
 }
