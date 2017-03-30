@@ -1,7 +1,3 @@
----
-typora-copy-images-to: assets
----
-
 这是小白的Python新手教程。
 
 Python是一种计算机程序设计语言。你可能已经听说过很多种流行的编程语言，比如非常难学的C语言，非常流行的Java语言，适合初学者的Basic语言，适合网页编程的JavaScript语言等等。
@@ -40,6 +36,7 @@ Python当然也有不能干的事情，比如写操作系统，这个只能用C�
 # 目录
 
 * [前言](README.md)
+* [Python学习之路](study.md)
 * [Python简介](1-Python简介\Python简介.md)
 * [安装Python](2-安装Python\安装Python.md)
   * [Python解释器](2-安装Python\Python解释器.md)

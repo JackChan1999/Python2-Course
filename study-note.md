@@ -10,8 +10,6 @@ pip install
 
 ![1490702838231](assets/1490702838231.png)
 
-
-
 ![1490702750800](assets/1490702750800.png)
 
 python -m pip install --upgrade pip
@@ -293,9 +291,9 @@ Python包含以下方法:
 
 ASCII → Unicode → UTF-8（可变长编码）
 
-ord() 
+ord()
 
-chr() 
+chr()
 
 encode()
 
@@ -416,7 +414,7 @@ range()
 
 别名：import cStringIO as StringIO
 
-特殊变量：\__xxx__ 
+特殊变量：\__xxx__
 
 _xxx
 
@@ -432,9 +430,9 @@ class Student(object)
 
 私有__(两个下划线)
 
-isinstance() 
+isinstance()
 
-type() 
+type()
 
 TypeType
 
@@ -882,4 +880,3 @@ WSGI：Web Server Gateway Interface
 ## 协程
 
 gevent
-
