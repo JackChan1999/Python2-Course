@@ -1,6 +1,7 @@
 # Summary
 
 * [前言](README.md)
+* [Python学习之路](study.md)
 * [Python简介](1-Python简介\Python简介.md)
 * [安装Python](2-安装Python\安装Python.md)
   * [Python解释器](2-安装Python\Python解释器.md)
