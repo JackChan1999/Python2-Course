@@ -236,3 +236,31 @@ list和tuple是Python内置的有序集合，一个可变，一个不可变。�
 | list.sort([func])       | 对原列表进行排序                          |
 
 列表生成式
+
+查找元素("查"in, not in, index, count)
+
+所谓的查找，就是看看指定的元素是否存在
+
+- in（存在）,如果存在那么结果为true，否则为false
+- not in（不存在），如果不存在那么结果为true，否则false
+- index和count与字符串中的⽤法相同
+
+### tuple
+
+字典包含了以下内置函数
+| 方法                            | 功能描述                                     |
+| :---------------------------- | :--------------------------------------- |
+| cmp(dict1, dict2)             | 比较两个字典元素。                                |
+| len(dict)                     | 计算字典元素个数，即键的总数。                          |
+| str(dict)                     | 输出字典可打印的字符串表示。                           |
+| type(variable)                | 返回输入的变量类型，如果变量是字典就返回字典类型。                |
+| clear()                       | 删除字典内所有元素                                |
+| copy()                        | 返回一个字典的浅复制                               |
+| fromkeys()                    | 创建一个新字典，以序列seq中元素做字典的键，val为字典所有键对应的初始值   |
+| get(key, default=None)        | 返回指定键的值，如果值不在字典中返回default值               |
+| has_key(key)                  | 如果键在字典dict里返回true，否则返回false              |
+| items()                       | 以列表返回可遍历的(键, 值) 元组数组                     |
+| keys()                        | 以列表返回一个字典所有的键                            |
+| setdefault(key, default=None) | 和get()类似, 但如果键已经不存在于字典中，将会添加键并将值设为default |
+| update(dict2)                 | 把字典dict2的键/值对更新到dict里                    |
+| values()                      | 以列表返回字典中的所有值                             |

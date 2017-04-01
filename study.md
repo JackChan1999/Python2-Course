@@ -31,6 +31,10 @@ Python具有丰富和强大的库。它常被昵称为胶水语言，能够把�
 - [极客学院Python Wiki](http://wiki.jikexueyuan.com/list/python/)
 - [Python在线手册中心](http://docs.pythontab.com/)
 
+## [给学生推荐python书籍](https://pan.baidu.com/s/1miQCIHq#list/path=%2F%E7%BB%99%E5%AD%A6%E7%94%9F%E6%8E%A8%E8%8D%90python%E4%B9%A6%E7%B1%8D)
+
+![1491038589724](assets/1491038589724.png)
+
 ## [Python爬虫学习系列教程](http://cuiqingcai.com/1052.html)
 
 ### 爬虫入门
