@@ -143,6 +143,4 @@ HTTP响应如果包含body，也是通过`\r\n\r\n`来分隔的。请再次注�
 
 当存在`Content-Encoding`时，Body数据是被压缩的，最常见的压缩方式是gzip，所以，看到`Content-Encoding: gzip`时，需要将Body数据先解压缩，才能得到真正的数据。压缩的目的在于减少Body的大小，加快网络传输。
 
-要详细了解HTTP协议，推荐“[HTTP: The Definitive Guide](http://shop.oreilly.com/product/9781565925090.do)”一书，非常不错，有中文译本：
-
-[HTTP权威指南](http://t.cn/R7FguRq)
+要详细了解HTTP协议，推荐“[HTTP: The Definitive Guide](http://shop.oreilly.com/product/9781565925090.do)”一书，非常不错，有中文译本：[HTTP权威指南](http://t.cn/R7FguRq)

@@ -406,75 +406,173 @@ range()
 
 ## 模块
 
-模块的文档注释
+### 包package
 
-\__author__
+每一个包目录下面都会有一个 __init__.py 的文件
 
-导包：import sys
+### 安装第三方模块
 
-别名：import cStringIO as StringIO
+setuptools
 
-特殊变量：\__xxx__
+- easy_install
+- pip
 
-_xxx
+安装命令
 
-setuptools：easy_install和pip
+```
+pip install PIL
+```
 
-模块搜索路径：sys.path.append()
+### 模块搜索路径
 
-新特性:\__future__
+sys.path.append()
+
+### 模块的文档注释
+
+' a test module '，任何模块代码的第一个字符串都被视为模块的文档注释
+
+### 代码作者
+
+`__author__`
+
+### 导包
+
+import sys
+
+### 特殊变量
+
+`__xxx__`，例如：`__name__`（运行测试） , `__author__`
+
+### 别名
+
+import cStringIO as StringIO
+
+### 作用域
+
+`__xxx__`
+
+`_xxx` private 函数或变量
+
+`__xxx` private
+
+### 新特性:
+
+`__future__`
+
+```
+from __future__ import division
+from __future__ import unicode_literals
+```
 
 ## OOP
 
-class Student(object)
+`__init(self,)__` 初始化或者构造方法
+
+self
 
 私有__(两个下划线)
 
-isinstance()
+`__xxx`私有变量，访问私有变量`_类名__变量名`
 
-type()
+`_xxx` 非私有变量，但不要随意访问
+
+`__xxx__`特殊变量
+
+isinstance()
 
 TypeType
 
- dir()
+ dir() 获取一个对象的所有属性和方法
 
-\__slots__ : 仅对当前类起作用，对继承的子类是不起作用的
+set，get，has方法
 
-@property
+### `__slots__` 
 
-多重继承
+限制class的属性，仅对当前类起作用，对继承的子类是不起作用的
 
-\__str__() toString()
+### @property
 
-\__repr__()
+把一个方法变成属性调用
 
-\__iter__ 遍历
+### 多重继承
 
-\__getitem__
+class Student(object)
 
-动态语言
+###  Mixin
+
+额外的功能
+
+### `__str__()`
+
+java中的toString()
+
+`__getattr__()`
+
+### `__repr__()`
+
+返回程序开发者看到的字符串，是为调试服务的
+
+### `__iter__` 
+
+遍历
+
+### `__getitem__`
+
+### `__call__`
+
+实例调用
+
+callable() 判断一个对象是否是“可调用”对象
+
+### type()
+
+获取一个类或变量的类型，或者创建一个类
+
+### metaclass
+
+元类，XxxMetaclass(type)，应用：ORM全称“Object Relational Mapping”
 
 ## IO
 
-| 方法声明    | 功能描述 |
-| ------- | ---- |
-| open()  |      |
-| read()  |      |
-| write() |      |
-| close() |      |
-| seek()  |      |
-|         |      |
-|         |      |
-|         |      |
-|         |      |
+同步IO
 
+异步IO
 
+回调模式
 
-with
+轮询模式
 
-readline()
+### 文件读写
+
+| 方法声明              | 功能描述                                   |
+| ----------------- | -------------------------------------- |
+| open(path , mode) | path：文件路径，mode：r读，w写，rb读二进制文件，wb写二进制文件 |
+|                   |                                        |
+|                   |                                        |
+| close()           |                                        |
+| seek()            |                                        |
+|                   |                                        |
+|                   |                                        |
+|                   |                                        |
+|                   |                                        |
+
+文件描述符
+
+with 语句
+
+### file-like Object
+
+StringIO
+
+### 二进制文件
+
+图片，视频
+
+### 字符编码
 
 codecs模块
+
+- open()
 
 ### File对象的属性
 
@@ -490,47 +588,66 @@ codecs模块
 | file.softspace | 如果用print输出后，必须跟一个空格符，则返回false。否则返回true |
 |                |                                        |
 
-### os模块
+read()
 
-| 方法声明        | 功能描述   |
-| ----------- | ------ |
-| rename()    | 重命名    |
-| remove()    | 删除文件   |
-| os.environ  |        |
-| os.getenv() |        |
-| listdir()   |        |
-| mkdir()     | 创建文件夹  |
-| chdir()     | 改变当前目录 |
-| getcwd()    | 显示当前目录 |
-| rmdir()     | 删除目录   |
+readline()
 
-### os.path
+readlines()
 
-| 方法声明       | 功能描述 |
-| ---------- | ---- |
-| abspath()  |      |
-| join()     |      |
-| mkdir()    |      |
-| rmdir()    |      |
-| split()    |      |
-| splitext() |      |
-| isdir()    |      |
-| isfile()   |      |
+write()
 
-shutil模块
+### 操作文件和目录
 
-- copyfile()
+#### os模块
 
-序列化
+os.name
 
-- cPickle
-- pickle
-  - dumps()
-  - dump()
-  - loads()
-  - load()
+uname()
 
-JSON
+| 方法声明        | 功能描述      |
+| ----------- | --------- |
+| rename()    | 重命名       |
+| remove()    | 删除文件      |
+| os.environ  |           |
+| os.getenv() | 获取系统的环境变量 |
+| listdir()   |           |
+| mkdir()     | 创建文件夹     |
+| chdir()     | 改变当前目录    |
+| getcwd()    | 显示当前目录    |
+| rmdir()     | 删除目录      |
+
+#### os.path
+
+| 方法声明       | 功能描述         |
+| ---------- | ------------ |
+| abspath()  | 查看当前目录的绝对路径  |
+| join()     | 合并路径         |
+| split()    | 拆分路径         |
+| splitext() | 拆分路径，得到文件扩展名 |
+| isdir()    | 是否是目录        |
+| isfile()   | 是否是文件        |
+
+#### 环境变量
+
+os.environ
+
+os.getenv()
+
+#### shutil模块
+
+- copyfile() 复制文件
+
+### 序列化
+
+pickling  unpickling
+
+#### pickle/cPickle
+- dumps()
+- dump()
+- loads()
+- load()
+
+### JSON
 
 json模块
 
@@ -539,14 +656,72 @@ json模块
 - loads()
 - load()
 
-## 多线程
+## 异常
+
+### 捕获异常
+
+try...except...finally...
+
+raise抛异常
+
+### 常见异常
+
+BaseException
+
+ZeroDivisionError
+
+StandardError
+
+ValueError
+
+AttributeError
+
+StopIteration
+
+TypeError
+
+IOError
+
+ImportError
+
+### logging
+
+- exception(e)
+- info()
+- basicConfig()
+- 日志级别：debug ， info ， warning ， error
+
+### pdb 
+
+单步调试，断点调试
+
+pdb.set_trace()
+
+### 断言
+
+assert
+
+AssertionError
+
+### 单元测试
+
+unittest
+
+- setUp()
+- tearDown
+
+### 文档测试
+
+doctest，可以直接提取注释中的代码并执行测试。
+
+## 进程和线程
 
 os模块
 
-- getpid()
+- getpid() 获取父进程id
 - fork()
 
-multiprocessing模块
+### multiprocessing模块
 
 managers
 
@@ -558,7 +733,7 @@ Process
 - join()
 - terminate()
 
-Pool
+Pool 进程池
 
 - apply_async()
 - close()
@@ -568,11 +743,12 @@ time
 
 - time()
 - sleep()
-- ​
 
 random
 
 - random()
+
+### 进程间通信
 
 Queue
 
@@ -581,6 +757,8 @@ Queue
 - Queue()
 
 Pipes
+
+### 多线程
 
 thread模块
 
@@ -593,16 +771,33 @@ threading模块
 - Lock()
 - local()
 
-主线程
+主线程  MainThread 
 
-Lock
+#### Lock
 
 - acquire()
 - release()
 
-GIL锁
+#### GIL锁
 
-ThreadLocal
+Global Interpreter Lock
+
+### 分布式进程
+
+multiprocessing.managers
+
+BaseManager
+
+- register()
+- start()
+- shutdown()
+- get_task_queue()
+- get_result_queue()
+- connect()
+
+### ThreadLocal
+
+一个dict，threading.local()
 
 ## 正则表达式
 
@@ -610,7 +805,7 @@ ThreadLocal
 - \w
 - *，+，？，{n}，{n,m}
 
-re模块
+### re模块
 
 - match()
 - split()
@@ -619,6 +814,38 @@ re模块
 - compile()
 
 ## 常用内建模块
+
+logging
+
+TCPServer，UDPServer
+
+simplejson json
+
+MethodType
+
+types
+
+slice
+
+os
+
+pdb
+
+search
+
+StringIO/cStringIO
+
+### types
+
+- StringType
+- UnicodeType
+- ListType
+- TypeType
+
+### sys
+
+- sys.path
+- sys.path.append()
 
 ### functools
 
@@ -633,9 +860,9 @@ functools.partial()
 
 ### collections
 
-- namedtuple
+- namedtuple 定义一种数据类型
 - Iterable
-- deque
+- deque 双向列表
   - append()
   - appendleft()
 - defaultdict
@@ -687,33 +914,14 @@ HTMLParser
 
 ## 常用第三方模块
 
-Image
-
-| 方法声明        | 功能描述 |
-| ----------- | ---- |
-| open()      |      |
-| save()      |      |
-| thumbnail() | 缩略图  |
-|             |      |
-|             |      |
-
-ImageDraw
-
-| 方法声明   | 功能描述 |
-| ------ | ---- |
-| Draw() |      |
-| text() |      |
-|        |      |
-
-ImageFont
-
-| 方法声明       | 功能描述 |
-| ---------- | ---- |
-| truetype() |      |
-|            |      |
-|            |      |
-
-ImageFilter
+| 第三方模块                      | 功能描述          |
+| -------------------------- | ------------- |
+| MySQL-python               | MySQL的驱动      |
+| numpy                      | 用于科学计算的NumPy库 |
+| Jinja2                     | 用于生成文本的模板工具   |
+| PIL：Python Imaging Library | 图片处理          |
+|                            |               |
+|                            |               |
 
 re
 
@@ -749,16 +957,51 @@ Pythongoose
 
 requests
 
-PIL：Python Imaging Library
+### PIL：Python Imaging Library
 
-- Image
-  - open()
-  - save()
-  - size
-  - thumbnail()
-  - filter()
+Image
 
-图形界面
+| 方法声明        | 功能描述        |
+| ----------- | ----------- |
+| open()      |             |
+| save()      |             |
+| thumbnail() | 缩略图         |
+| format      | 格式：png，jpg等 |
+| filter()    |             |
+| size        | 尺寸          |
+| mode        |             |
+| new()       |             |
+|             |             |
+
+ImageDraw
+
+| 方法声明    | 功能描述   |
+| ------- | ------ |
+| Draw()  |        |
+| text()  |        |
+| point() | 填充每个像素 |
+
+ImageFont
+
+| 方法声明       | 功能描述     |
+| ---------- | -------- |
+| truetype() | 创建Font对象 |
+|            |          |
+|            |          |
+
+ImageFilter
+
+| 方法声明 | 功能描述 |
+| ---- | ---- |
+| BLUR |      |
+|      |      |
+|      |      |
+
+### requests
+
+
+
+## 图形界面
 
 - Tkinter
   - Frame：mainloop()
@@ -771,7 +1014,7 @@ PIL：Python Imaging Library
 
 ## 网络编程
 
-TCP/IP
+### TCP/IP
 
 Socket，封装了IP和端口
 
