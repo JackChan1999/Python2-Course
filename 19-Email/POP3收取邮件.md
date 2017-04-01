@@ -18,7 +18,7 @@ Python内置一个`poplib`模块，实现了POP3协议，可以直接用来收�
 
 POP3协议本身很简单，以下面的代码为例，我们来获取最新的一封邮件内容：
 
-```
+```python
 import poplib
 
 # 输入邮件地址, 口令和POP3服务器地址:
@@ -62,7 +62,7 @@ server.quit()
 
 解析邮件的过程和上一节构造邮件正好相反，因此，先导入必要的模块：
 
-```
+```python
 import email
 from email.parser import Parser
 from email.header import decode_header
@@ -72,7 +72,7 @@ from email.utils import parseaddr
 
 只需要一行代码就可以把邮件内容解析为`Message`对象：
 
-```
+```python
 msg = Parser().parsestr(msg_content)
 
 ```
@@ -81,7 +81,7 @@ msg = Parser().parsestr(msg_content)
 
 所以我们要递归地打印出`Message`对象的层次结构：
 
-```
+```python
 # indent用于缩进显示:
 def print_info(msg, indent=0):
     if indent == 0:
@@ -127,7 +127,7 @@ def print_info(msg, indent=0):
 
 邮件的Subject或者Email中包含的名字都是经过编码后的str，要正常显示，就必须decode：
 
-```
+```python
 def decode_str(s):
     value, charset = decode_header(s)[0]
     if charset:
@@ -140,7 +140,7 @@ def decode_str(s):
 
 文本邮件的内容也是str，还需要检测编码，否则，非UTF-8编码的邮件都无法正常显示：
 
-```
+```python
 def guess_charset(msg):
     # 先从msg对象获取编码:
     charset = msg.get_charset()

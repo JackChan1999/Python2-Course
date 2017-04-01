@@ -1,6 +1,6 @@
 数据库表是一个二维表，包含多行多列。把一个表的内容用Python的数据结构表示出来的话，可以用一个list表示多行，list的每一个元素是tuple，表示一行记录，比如，包含`id`和`name`的`user`表：
 
-```
+```python
 [
     ('1', 'Michael'),
     ('2', 'Bob'),
@@ -13,7 +13,7 @@ Python的DB-API返回的数据结构就是像上面这样表示的。
 
 但是用tuple表示一行很难看出表的结构。如果把一个tuple用class实例来表示，就可以更容易地看出表的结构来：
 
-```
+```python
 class User(object):
     def __init__(self, id, name):
         self.id = id
@@ -44,7 +44,7 @@ $ easy_install sqlalchemy
 
 第一步，导入SQLAlchemy，并初始化DBSession：
 
-```
+```python
 # 导入:
 from sqlalchemy import Column, String, create_engine
 from sqlalchemy.orm import sessionmaker
@@ -71,7 +71,7 @@ DBSession = sessionmaker(bind=engine)
 
 以上代码完成SQLAlchemy的初始化和具体每个表的class定义。如果有多个表，就继续定义其他class，例如School：
 
-```
+```python
 class School(Base):
     __tablename__ = 'school'
     id = ...
@@ -92,7 +92,7 @@ class School(Base):
 
 由于有了ORM，我们向数据库表中添加一行记录，可以视为添加一个`User`对象：
 
-```
+```python
 # 创建session对象:
 session = DBSession()
 # 创建新User对象:
@@ -110,7 +110,7 @@ session.close()
 
 如何从数据库表中查询数据呢？有了ORM，查询出来的可以不再是tuple，而是`User`对象。SQLAlchemy提供的查询接口如下：
 
-```
+```python
 # 创建Session:
 session = DBSession()
 # 创建Query查询，filter是where条件，最后调用one()返回唯一行，如果调用all()则返回所有行:
@@ -137,7 +137,7 @@ name: Bob
 
 例如，如果一个User拥有多个Book，就可以定义一对多关系如下：
 
-```
+```python
 class User(Base):
     __tablename__ = 'user'
 

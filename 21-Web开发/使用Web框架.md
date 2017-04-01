@@ -6,7 +6,7 @@
 
 一个最简单的想法是从`environ`变量里取出HTTP请求的信息，然后逐个判断：
 
-```
+```python
 def application(environ, start_response):
     method = environ['REQUEST_METHOD']
     path = environ['PATH_INFO']
@@ -41,7 +41,7 @@ $ easy_install flask
 
 Flask通过Python的[装饰器](http://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000/001386819879946007bbf6ad052463ab18034f0254bf355000)在内部自动地把URL和函数给关联起来，所以，我们写出来的代码就像这样：
 
-```
+```python
 from flask import Flask
 from flask import request
 
@@ -74,7 +74,7 @@ if __name__ == '__main__':
 运行`python app.py`，Flask自带的Server在端口`5000`上监听：
 
 ```
-$ python app.py 
+$ python app.py
  * Running on http://127.0.0.1:5000/
 
 ```

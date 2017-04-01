@@ -8,7 +8,7 @@ Socket是网络编程的一个抽象概念。通常我们用一个Socket表示�
 
 所以，我们要创建一个基于TCP连接的Socket，可以这样做：
 
-```
+```python
 # 导入socket库:
 import socket
 # 创建一个socket:
@@ -26,7 +26,7 @@ s.connect(('www.sina.com.cn', 80))
 
 因此，我们连接新浪服务器的代码如下：
 
-```
+```python
 s.connect(('www.sina.com.cn', 80))
 
 ```
@@ -35,7 +35,7 @@ s.connect(('www.sina.com.cn', 80))
 
 建立TCP连接后，我们就可以向新浪服务器发送请求，要求返回首页的内容：
 
-```
+```python
 # 发送数据:
 s.send('GET / HTTP/1.1\r\nHost: www.sina.com.cn\r\nConnection: close\r\n\r\n')
 
@@ -45,7 +45,7 @@ TCP连接创建的是双向通道，双方都可以同时给对方发数据。�
 
 发送的文本格式必须符合HTTP标准，如果格式没问题，接下来就可以接收新浪服务器返回的数据了：
 
-```
+```python
 # 接收数据:
 buffer = []
 while True:
@@ -63,7 +63,7 @@ data = ''.join(buffer)
 
 当我们接收完数据后，调用`close()`方法关闭Socket，这样，一次完整的网络通信就结束了：
 
-```
+```python
 # 关闭连接:
 s.close()
 
@@ -71,7 +71,7 @@ s.close()
 
 接收到的数据包括HTTP头和网页本身，我们只需要把HTTP头和网页分离一下，把HTTP头打印出来，网页内容保存到文件：
 
-```
+```python
 header, html = data.split('\r\n\r\n', 1)
 print header
 # 把接收的数据写入文件:
@@ -96,7 +96,7 @@ with open('sina.html', 'wb') as f:
 
 首先，创建一个基于IPv4和TCP协议的Socket：
 
-```
+```python
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 ```
@@ -105,7 +105,7 @@ s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 端口号需要预先指定。因为我们写的这个服务不是标准服务，所以用`9999`这个端口号。请注意，小于`1024`的端口号必须要有管理员权限才能绑定：
 
-```
+```python
 # 监听端口:
 s.bind(('127.0.0.1', 9999))
 
@@ -113,7 +113,7 @@ s.bind(('127.0.0.1', 9999))
 
 紧接着，调用`listen()`方法开始监听端口，传入的参数指定等待连接的最大数量：
 
-```
+```python
 s.listen(5)
 print 'Waiting for connection...'
 
@@ -121,7 +121,7 @@ print 'Waiting for connection...'
 
 接下来，服务器程序通过一个永久循环来接受来自客户端的连接，`accept()`会等待并返回一个客户端的连接:
 
-```
+```python
 while True:
     # 接受一个新连接:
     sock, addr = s.accept()
@@ -133,7 +133,7 @@ while True:
 
 每个连接都必须创建新线程（或进程）来处理，否则，单线程在处理连接的过程中，无法接受其他客户端的连接：
 
-```
+```python
 def tcplink(sock, addr):
     print 'Accept new connection from %s:%s...' % addr
     sock.send('Welcome!')
@@ -152,7 +152,7 @@ def tcplink(sock, addr):
 
 要测试这个服务器程序，我们还需要编写一个客户端程序：
 
-```
+```python
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 # 建立连接:
 s.connect(('127.0.0.1', 9999))

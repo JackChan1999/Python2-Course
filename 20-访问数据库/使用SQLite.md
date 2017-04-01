@@ -16,7 +16,7 @@ Python定义了一套操作数据库的API接口，任何数据库要连接到Py
 
 我们在Python交互式命令行实践一下：
 
-```
+```python
 # 导入SQLite驱动:
 >>> import sqlite3
 # 连接到SQLite数据库
@@ -45,7 +45,7 @@ Python定义了一套操作数据库的API接口，任何数据库要连接到Py
 
 我们再试试查询记录：
 
-```
+```python
 >>> conn = sqlite3.connect('test.db')
 >>> cursor = conn.cursor()
 # 执行查询语句:
@@ -68,7 +68,7 @@ Python定义了一套操作数据库的API接口，任何数据库要连接到Py
 
 如果SQL语句带有参数，那么需要把参数按照位置传递给`execute()`方法，有几个`?`占位符就必须对应几个参数，例如：
 
-```
+```python
 cursor.execute('select * from user where name=? and pwd=?', ('abc', '123456'))
 
 ```

@@ -27,7 +27,7 @@ collation-server = utf8_general_ci
 
 ```
 $ mysql -u root -p
-Enter password: 
+Enter password:
 Welcome to the MySQL monitor...
 ...
 
@@ -69,7 +69,7 @@ $ easy_install MySQL-python
 
 我们以mysql-connector-python为例，演示如何连接到MySQL服务器的test数据库：
 
-```
+```python
 # 导入MySQL驱动:
 >>> import mysql.connector
 # 注意把password设为你的root口令:

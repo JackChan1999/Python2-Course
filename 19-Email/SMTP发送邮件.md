@@ -4,7 +4,7 @@ Python对SMTP支持有`smtplib`和`email`两个模块，`email`负责构造邮�
 
 首先，我们来构造一个最简单的纯文本邮件：
 
-```
+```python
 from email.mime.text import MIMEText
 msg = MIMEText('hello, send by Python...', 'plain', 'utf-8')
 
@@ -14,7 +14,7 @@ msg = MIMEText('hello, send by Python...', 'plain', 'utf-8')
 
 然后，通过SMTP发出去：
 
-```
+```python
 # 输入Email地址和口令:
 from_addr = raw_input('From: ')
 password = raw_input('Password: ')
@@ -46,7 +46,7 @@ server.quit()
 
 这是因为邮件主题、如何显示发件人、收件人等信息并不是通过SMTP协议发给MTA，而是包含在发给MTA的文本中的，所以，我们必须把`From`、`To`和`Subject`添加到`MIMEText`中，才是一封完整的邮件：
 
-```
+```python
 # -*- coding: utf-8 -*-
 
 from email import encoders
@@ -91,7 +91,7 @@ server.quit()
 
 如果我们查看Email的原始内容，可以看到如下经过编码的邮件头：
 
-```
+```python
 From: =?utf-8?b?UHl0aG9u54ix5aW96ICF?= <xxxxxx@163.com>
 To: =?utf-8?b?566h55CG5ZGY?= <xxxxxx@qq.com>
 Subject: =?utf-8?b?5p2l6IeqU01UUOeahOmXruWAmeKApuKApg==?=
@@ -104,7 +104,7 @@ Subject: =?utf-8?b?5p2l6IeqU01UUOeahOmXruWAmeKApuKApg==?=
 
 如果我们要发送HTML邮件，而不是普通的纯文本文件怎么办？方法很简单，在构造`MIMEText`对象时，把HTML字符串传进去，再把第二个参数由`plain`变为`html`就可以了：
 
-```
+```python
 msg = MIMEText('<html><body><h1>Hello</h1>' +
     '<p>send by <a href="http://www.python.org">Python</a>...</p>' +
     '</body></html>', 'html', 'utf-8')
@@ -119,7 +119,7 @@ msg = MIMEText('<html><body><h1>Hello</h1>' +
 
 如果Email中要加上附件怎么办？带附件的邮件可以看做包含若干部分的邮件：文本和各个附件本身，所以，可以构造一个`MIMEMultipart`对象代表邮件本身，然后往里面加上一个`MIMEText`作为邮件正文，再继续往里面加上表示附件的`MIMEBase`对象即可：
 
-```
+```python
 # 邮件对象:
 msg = MIMEMultipart()
 msg['From'] = _format_addr(u'Python爱好者 <%s>' % from_addr)
@@ -158,7 +158,7 @@ with open('/Users/michael/Downloads/test.png', 'rb') as f:
 
 把上面代码加入`MIMEMultipart`的`MIMEText`从`plain`改为`html`，然后在适当的位置引用图片：
 
-```
+```python
 msg.attach(MIMEText('<html><body><h1>Hello</h1>' +
     '<p><img src="cid:0"></p>' +
     '</body></html>', 'html', 'utf-8'))
@@ -177,7 +177,7 @@ msg.attach(MIMEText('<html><body><h1>Hello</h1>' +
 
 利用`MIMEMultipart`就可以组合一个HTML和Plain，要注意指定subtype是`alternative`：
 
-```
+```python
 msg = MIMEMultipart('alternative')
 msg['From'] = ...
 msg['To'] = ...
@@ -197,7 +197,7 @@ msg.attach(MIMEText('<html><body><h1>Hello</h1></body></html>', 'html', 'utf-8')
 
 必须知道，Gmail的SMTP端口是587，因此，修改代码如下：
 
-```
+```python
 smtp_server = 'smtp.gmail.com'
 smtp_port = 587
 server = smtplib.SMTP(smtp_server, smtp_port)
