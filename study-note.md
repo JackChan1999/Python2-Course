@@ -256,6 +256,24 @@ Python包含以下方法:
 | isupper()    | 是否是大写 |
 | lower()      | 转成小写  |
 
+### 常⽤的格式符号
+
+| 格式   | 符号转换              |
+| :--- | :---------------- |
+| %c   | 字符                |
+| %s   | 通过str() 字符串转换来格式化 |
+| %i   | 有符号⼗进制整数          |
+| %d   | 有符号⼗进制整数          |
+| %u   | ⽆符号⼗进制整数          |
+| %o   | ⼋进制整数             |
+| %x   | ⼗六进制整数（⼩写字⺟）      |
+| %X   | ⼗六进制整数（⼤写字⺟）      |
+| %e   | 索引符号（⼩写'e'）       |
+| %E   | 索引符号（⼤写“E”）       |
+| %f   | 浮点实数              |
+| %g   | ％f和％e 的简写         |
+| %G   | ％f和％E的简写          |
+
 ## 时间和日期
 
 ### time
@@ -344,8 +362,6 @@ Built-in Functions
 - abs()
 - cmp()
 - sum()
-- id()
-- type()
 - max()
 - min()
 - list()
@@ -547,18 +563,25 @@ callable() 判断一个对象是否是“可调用”对象
 | 方法声明              | 功能描述                                   |
 | ----------------- | -------------------------------------- |
 | open(path , mode) | path：文件路径，mode：r读，w写，rb读二进制文件，wb写二进制文件 |
-|                   |                                        |
-|                   |                                        |
-| close()           |                                        |
-| seek()            |                                        |
-|                   |                                        |
-|                   |                                        |
-|                   |                                        |
-|                   |                                        |
 
 文件描述符
 
 with 语句
+
+| 访问模式 | 说明                                       |
+| :--- | :--------------------------------------- |
+| r    | 以只读⽅式打开⽂件。⽂件的指针将会放在⽂件的开头。这是默认模式。         |
+| w    | 打开⼀个⽂件只⽤于写⼊。如果该⽂件已存在则将其覆盖。如果该⽂件不存在，创建新⽂件。 |
+| a    | 打开⼀个⽂件⽤于追加。如果该⽂件已存在，⽂件指针将会放在⽂件的结尾。也就是说，新的内容将会被写⼊到已有内容之后。如果该⽂件不存在，创建新⽂件进⾏写⼊。 |
+| rb   | 以⼆进制格式打开⼀个⽂件⽤于只读。⽂件指针将会放在⽂件的开头。这是默认模式。   |
+| wb   | 以⼆进制格式打开⼀个⽂件只⽤于写⼊。如果该⽂件已存在则将其覆盖。如果该⽂件不存在，创建新⽂件。 |
+| ab   | 以⼆进制格式打开⼀个⽂件⽤于追加。如果该⽂件已存在，⽂件指针将会放在⽂件的结尾。也就是说，新的内容将会被写⼊到已有内容之后。如果该⽂件不存在，创建新⽂件进⾏写⼊。 |
+| r+   | 打开⼀个⽂件⽤于读写。⽂件指针将会放在⽂件的开头。                |
+| w+   | 打开⼀个⽂件⽤于读写。如果该⽂件已存在则将其覆盖。如果该⽂件不存在，创建新⽂件。 |
+| a+   | 打开⼀个⽂件⽤于读写。如果该⽂件已存在，⽂件指针将会放在⽂件的结尾。⽂件打开时会是追加模式。如果该⽂件不存在，创建新⽂件⽤于读写。 |
+| rb+  | 以⼆进制格式打开⼀个⽂件⽤于读写。⽂件指针将会放在⽂件的开头。          |
+| wb+  | 以⼆进制格式打开⼀个⽂件⽤于读写。如果该⽂件已存在则将其覆盖。如果该⽂件不存在，创建新⽂件。 |
+| ab+  | 以⼆进制格式打开⼀个⽂件⽤于追加。如果该⽂件已存在，⽂件指针将会放在⽂件的结尾。如果该⽂件不存在，创建新⽂件⽤于读写。 |
 
 ### file-like Object
 
@@ -588,13 +611,17 @@ codecs模块
 | file.softspace | 如果用print输出后，必须跟一个空格符，则返回false。否则返回true |
 |                |                                        |
 
-read()
-
-readline()
-
-readlines()
-
-write()
+| 方法声明               | 功能描述                                     |
+| ------------------ | ---------------------------------------- |
+| read(num)          | 读num个字节数据                                |
+| readline()         | 读一行数据                                    |
+| readlines()        | 按照⾏的⽅式把整个⽂件中的内容进⾏⼀次性读取，<br>并且返回的是⼀个列表，其中每⼀⾏的数据为⼀个元素 |
+| write()            | 写数据                                      |
+| tell()             | 获取当前读写的位置                                |
+| seek(offset, from) | 定位到某个位置                                  |
+| close()            | 关闭文件                                     |
+|                    |                                          |
+|                    |                                          |
 
 ### 操作文件和目录
 
@@ -610,11 +637,11 @@ uname()
 | remove()    | 删除文件      |
 | os.environ  |           |
 | os.getenv() | 获取系统的环境变量 |
-| listdir()   |           |
+| listdir()   | 获取⽬录列表    |
 | mkdir()     | 创建文件夹     |
 | chdir()     | 改变当前目录    |
 | getcwd()    | 显示当前目录    |
-| rmdir()     | 删除目录      |
+| rmdir()     | 删除文件夹     |
 
 #### os.path
 
@@ -999,7 +1026,9 @@ ImageFilter
 
 ### requests
 
+### SQLAlchemy
 
+数据库ORM框架
 
 ## 图形界面
 
@@ -1016,110 +1045,260 @@ ImageFilter
 
 ### TCP/IP
 
-Socket，封装了IP和端口
+Socket，封装了IP和端口，IP包，数据包
 
-- connect()
-- send()
-- recv()
-- recvfrom()
-- sendto()
-- close()
-- bind()
-- listen()
-- accept()
+socket(socket.AF_INET, socket.SOCK_STREAM)
 
-UDP
+| 方法声明               | 功能描述           |
+| ------------------ | -------------- |
+| connect(ip , port) | 链接服务器          |
+| send()             | 发送数据           |
+| recv()             | 接收数据           |
+| recvfrom()         | 直接接收来自任何客户端的数据 |
+| sendto()           | 把数据用UDP发给客户端   |
+| close()            |                |
+| bind()             | 绑定端口           |
+| listen()           | 监听端口           |
+| accept()           | 接受客户端的链接       |
 
-HTTP
+### UDP
 
-## 邮件
+socket(socket.AF_INET, socket.SOCK_DGRAM)
 
-SMTP
+### HTTP
 
-smtplib模块
+## 电子邮件
 
-- SMTP
-- set_debuglevel()
-- login()
-- sendmail()
-- quit()
-- starttls()
-- MIMEMultipart
-  - attach()
+### 邮件发送接收流程
 
-email模块
+发件人 → MUA → MTA → MTA → 若干个MTA → MDA ← MUA ← 收件人
 
-- MIMEText
+MUA：Mail User Agent——邮件用户代理，Outlook，Foxmail
 
-POP3
+MTA：Mail Transfer Agent——邮件传输代理，就是那些Email服务提供商，比如网易、新浪、Gmail
 
-poplib模块
+MDA：Mail Delivery Agent——邮件投递代理，电子邮箱
 
-- poplib.POP3()
-- getwelcome()
-- user()
-- pass_()
-- stat()
-- list()
-- len()
-- retr()
+### 发邮件
 
-Parser
+#### smtplib模块，负责发送邮件
 
-- parsestr()
+SMTP：Simple Mail Transfer Protocol
+
+| 方法声明             | 功能描述      |
+| ---------------- | --------- |
+| SMTP()           | 构造方法      |
+| set_debuglevel() | 设置Debug级别 |
+| login()          | 登录        |
+| sendmail()       | 发送邮件      |
+| quit()           | 退出        |
+| starttls()       | 加密传输      |
+
+#### email模块，负责构造邮件
+
+```
+Message 邮件对象
++- MIMEBase
+	+- MIMEMultipart 把多个对象组合起来
+	+- MIMENonMultipart
+		+- MIMEMessage
+		+- MIMEText 文本邮件对象
+		+- MIMEImage 作为附件的图片
+```
+Message
+| 方法声明               | 功能描述                  |
+| ------------------ | --------------------- |
+| get_payload()      | 获取MIMEMultipart所有的子对象 |
+| get_content_type() | 获取内容类型                |
+| get_charset()      | 获取编码                  |
+| get()              |                       |
+| is_multipart()     | 是否是MIMEMultipart对象    |
+
+MIMEBase
+
+| 方法声明          | 功能描述      |
+| ------------- | --------- |
+| add_header()  | 添加头信息     |
+| set_payload() | 把附件的内容读进来 |
+
+MIMEText
+
+| 方法声明                          | 功能描述 |
+| ----------------------------- | ---- |
+| MIMEText(正文，mimetype，charset) | 构造方法 |
+| as_string()                   |      |
+|                               |      |
+
+MIMEMultipart
+
+| 方法声明        | 功能描述   |
+| ----------- | ------ |
+| attach()    |        |
+| alternative | 兼容古老设备 |
+
+encoders
+
+- encode_base64()
+
+decode_header()
+
+Header 邮件头
+
+- From
+- To
+- Subject
+
+from email.utils import formataddr
+
+mimetype
+
+- text/plain
+- text/html
+- image/png
+
+### 收邮件
+
+POP3：Post Office Protocol
+
+IMAP：Internet Message Access Protocol
+
+#### poplib模块
+
+| 方法声明          | 功能描述           |
+| ------------- | -------------- |
+| poplib.POP3() | 构造方法           |
+| getwelcome()  | 获取POP3服务器的欢迎文字 |
+| user()        | 验证用户名          |
+| pass_()       | 验证密码           |
+| stat()        | 获取邮件数量和占用空间    |
+| list()        | 获取所有邮件的编号      |
+| len()         | 获取邮件索引         |
+| retr()        | 获取邮件内容         |
+| dele          | 删除邮件           |
+| quit          | 关闭链接           |
+
+#### Parser
+
+| 方法声明       | 功能描述                |
+| ---------- | ------------------- |
+| parsestr() | 把邮件内容解析为 Message 对象 |
+|            |                     |
+
+parseaddr
 
 ## 数据库
 
-NoSQL
+- 网状数据库
+- 层次数据库
+- 关系数据库
+- NoSQL
+- MySQL
+- SQLite
+- SQLAlchemy
 
-MySQL
+### sqlite3
 
-SQLite
+嵌入式数据库
 
-sqlite3
+| 方法声明      | 功能描述  |
+| --------- | ----- |
+| connect() | 连接数据库 |
 
-- connect()
-- cursor()
-- close()
-- commit()
+### Connection
 
-cursor
+| 方法声明     | 功能描述 |
+| -------- | ---- |
+| cursor() | 获取游标 |
+| commit() | 提交事务 |
+| close()  | 关闭连接 |
 
-- rowcount
-- execute()
-- close()
-- fetchall()
-- insert()
-- update()
-- delete()
+### Cursor
 
-MySQL
+| 方法声明       | 功能描述    |
+| ---------- | ------- |
+| execute()  | 执行SQL语句 |
+| insert()   |         |
+| update()   |         |
+| delete()   |         |
+| fetchall() | 获取查询结果集 |
+| close()    |         |
+| rowcount   | 影响的记录行数 |
 
-mysql.connector
+### MySQL
 
-- connect()
-- cursor()
-- commit()
+mysql.connector 驱动
 
-cursor
+| 方法声明      | 功能描述  |
+| --------- | ----- |
+| connect() | 连接数据库 |
 
-- execute()
-- rowcount
-- close()
-- fetchall()
+### SQLAlchemy
 
-SQLAlchemy
+ORM：Object-Relational Mapping
 
-WSGI：Web Server Gateway Interface
+#### DBSession
 
-- Flask
+数据会话类
+
+```
+# 创建DBSession类型
+DBSession = sessionmaker(bind=engine)
+# 创建session对象
+session = DBSession()
+```
+
+| 方法声明     | 功能描述  |
+| -------- | ----- |
+| add()    |       |
+| commit() | 提交    |
+| query()  | 查询    |
+| filter() | 过滤    |
+| one()    | 返回唯一行 |
+| close()  | 关闭会话  |
+
+#### declarative_base
+
+Base = declarative_base()
+
+#### create_engine
+
+初始化数据库连接
+
+#### sessionmaker
+
+#### Column
+
+
+## 协程
+
+gevent，在程序内部可中断
+
+## Web开发
+
+C/S架构
+
+B/S架构
+
+HTML + CSS + JavaScript
+
+MVC Model-View-Controller
+
+MVVM
+
+HTTP
+
+### WSGI
+
+Web Server Gateway Interface
+
+wsgiref模块
+
+### Flask
+
+jinja2
+
 - Django：全能型Web框架
 - web.py：一个小巧的Web框架
 - Bottle：和Flask类似的Web框架
 - Tornado：Facebook的开源异步Web框架
 
-
-
-## 协程
-
-gevent

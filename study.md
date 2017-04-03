@@ -8,7 +8,7 @@
 
 - [Python基础班2016版](http://yun.itheima.com/course/214.html)  [下载地址](https://pan.baidu.com/s/1kVNmOar#list/path=%2F)
 
- Python, 是一种面向对象、解释型计算机程序设计语言，由Guido van Rossum于1989年发明，第一个公开发行版发行于1991年。
+Python, 是一种面向对象、解释型计算机程序设计语言，由Guido van Rossum于1989年发明，第一个公开发行版发行于1991年。
 
 Python是纯粹的自由软件， 源代码和解释器CPython遵循 GPL(GNU General Public License)协议 。
 
