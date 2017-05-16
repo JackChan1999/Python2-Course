@@ -26,6 +26,20 @@ python -m pip install --upgrade pip
 
 ![1490703973457](assets/1490703973457.png)
 
+pip list 查看安装的模块
+
+Sublime 代码提示/补全插件 Anaconda
+
+LookupError: unknown encoding: cp65001
+
+chcp 65001  就是换成UTF-8代码页
+
+chcp 936 可以换回默认的[GBK](http://www.169it.com/tag/gbk)
+
+chcp 437 是美国[英语](http://www.169it.com/tag/%E8%8B%B1%E8%AF%AD)  
+
+1252 拉丁 1 字符 (ANSI) 
+
 ## 快捷键
 
 tab代码补全

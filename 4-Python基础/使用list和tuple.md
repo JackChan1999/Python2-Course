@@ -265,3 +265,5 @@ list和tuple是Python内置的有序集合，一个可变，一个不可变。�
 | setdefault(key, default=None) | 和get()类似, 但如果键已经不存在于字典中，将会添加键并将值设为default |
 | update(dict2)                 | 把字典dict2的键/值对更新到dict里                    |
 | values()                      | 以列表返回字典中的所有值                             |
+
+只有1个元素的tuple定义时必须加一个逗号(1,)
