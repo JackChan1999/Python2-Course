@@ -57,19 +57,52 @@ tab代码补全
 - ColorPicker
 - OmniMarkupPreviewer
 
+## 注释
+
+```
+# 单行注释
+'''
+多行注释
+'''
+```
+
 ## 输入输出
+
+```
+# coding=utf-8
+```
 
 print()
 
 raw_input()
 
-input()
+input() 接收表达式
 
 Ctrl+C 退出程序
 
+格式化输出
+
+| 格式符号 | 转换                |
+| :--- | :---------------- |
+| %c   | 字符                |
+| %s   | 通过str() 字符串转换来格式化 |
+| %i   | 有符号⼗进制整数          |
+| %d   | 有符号⼗进制整数          |
+| %u   | ⽆符号⼗进制整数          |
+| %o   | ⼋进制整数             |
+| %x   | ⼗六进制整数（⼩写字⺟）      |
+| %X   | ⼗六进制整数（⼤写字⺟）      |
+| %e   | 索引符号（⼩写'e'）       |
+| %E   | 索引符号（⼤写“E”）       |
+| %f   | 浮点实数              |
+| %g   | %f和%e 的简写         |
+| %G   | %f和%E的简写          |
+
 ## 变量
 
-global，id()
+global，在函数中修改全局变量
+
+引用，id()
 
 1. python中的变量不需要先定义，再使用，可以直接使用,还有重新使用用以存储不同类型的值。
 2. 变量命名遵循C命名风格。
@@ -185,12 +218,14 @@ list
 - sort()
 - reverse()
 
-### tuple
+### tuple元组
 
+- ()
 - tuple一旦初始化就不能修改
 
-### dict(map)
+### dict(map)字典
 
+- {}
 - get()
 - pop(key)
 - iteritems()
@@ -198,6 +233,7 @@ list
 
 ### set
 
+- 单列集合，唯一，无序
 - add()
 - remove()
 
@@ -384,6 +420,14 @@ Built-in Functions
 - enumerate()把一个list变成索引-元素对
 - sort()
 
+可以返回多个值
+
+缺省参数printinfo( name, age = 35 )
+
+不定长参数fun(a, b, *args, **kwargs)
+
+lambda函数
+
 ### 函数参数
 
 默认参数，默认参数必须指向不变对象
@@ -438,7 +482,7 @@ range()
 
 ### 包package
 
-每一个包目录下面都会有一个 __init__.py 的文件
+每一个包目录下面都会有一个 `__init__.py` 的文件
 
 ### 安装第三方模块
 
@@ -455,7 +499,15 @@ pip install PIL
 
 ### 模块搜索路径
 
-sys.path.append()
+- 当前目录
+- 内置模块
+- 第三方模块
+
+sys.path 搜索路径
+
+sys.path.append()添加搜索路径，运行时失效
+
+PYTHONPATH，与设置Path环境变量类似
 
 ### 模块的文档注释
 
@@ -496,7 +548,7 @@ from __future__ import unicode_literals
 
 ## OOP
 
-`__init(self,)__` 初始化或者构造方法
+`__init(self)__` 初始化或者构造方法
 
 self
 
@@ -530,13 +582,15 @@ class Student(object)
 
 ###  Mixin
 
-额外的功能
+额外的功能，扩展
 
 ### `__str__()`
 
 java中的toString()
 
-`__getattr__()`
+### `__getattr__()`
+
+属性不存在时，动态返回一个属性
 
 ### `__repr__()`
 
@@ -548,11 +602,21 @@ java中的toString()
 
 ### `__getitem__`
 
+通过下标取元素
+
+`__setitem__()`
+
+`__delitem__()`
+
 ### `__call__`
 
 实例调用
 
 callable() 判断一个对象是否是“可调用”对象
+
+`__len__`
+
+`__len__()`
 
 ### type()
 
@@ -636,6 +700,8 @@ codecs模块
 | close()            | 关闭文件                                     |
 |                    |                                          |
 |                    |                                          |
+
+rfind() 提取⽂件的后缀
 
 ### 操作文件和目录
 
@@ -788,6 +854,7 @@ time
 random
 
 - random()
+- randint()
 
 ### 进程间通信
 
