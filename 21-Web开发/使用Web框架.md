@@ -101,10 +101,10 @@ $ python app.py
 
 除了Flask，常见的Python Web框架还有：
 
-- [Django](https://www.djangoproject.com/)：全能型Web框架；
-- [web.py](http://webpy.org/)：一个小巧的Web框架；
-- [Bottle](http://bottlepy.org/)：和Flask类似的Web框架；
-- [Tornado](http://www.tornadoweb.org/)：Facebook的开源异步Web框架。
+- [Django](https://www.djangoproject.com/)：全能型Web框架
+- [web.py](http://webpy.org/)：一个小巧的Web框架
+- [Bottle](http://bottlepy.org/)：和Flask类似的Web框架
+- [Tornado](http://www.tornadoweb.org/)：Facebook的开源异步Web框架
 
 当然了，因为开发Python的Web框架也不是什么难事，我们后面也会自己开发一个Web框架。
 

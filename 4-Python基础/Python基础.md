@@ -43,3 +43,7 @@ Java是静态语言
 - ord()：字母转数字，chr()：数字转字符
 - len()
 - b'xxx' 字节形式表示字符串
+
+老司机谈python语法，一张图看明白python
+
+![](img/python语法.png)
