@@ -24,7 +24,7 @@ Windows平台就去[PIL官方网站](http://pythonware.com/products/pil/)下载e
 
 来看看最常见的图像缩放操作，只需三四行代码：
 
-```
+```python
 import Image
 
 # 打开一个jpg图像文件，注意路径要改成你自己的:
@@ -35,20 +35,18 @@ w, h = im.size
 im.thumbnail((w//2, h//2))
 # 把缩放后的图像用jpeg格式保存:
 im.save('/Users/michael/thumbnail.jpg', 'jpeg')
-
 ```
 
 其他功能如切片、旋转、滤镜、输出文字、调色板等一应俱全。
 
 比如，模糊效果也只需几行代码：
 
-```
+```python
 import Image, ImageFilter
 
 im = Image.open('/Users/michael/test.jpg')
 im2 = im.filter(ImageFilter.BLUR)
 im2.save('/Users/michael/blur.jpg', 'jpeg')
-
 ```
 
 效果如下：
@@ -57,7 +55,7 @@ im2.save('/Users/michael/blur.jpg', 'jpeg')
 
 PIL的`ImageDraw`提供了一系列绘图方法，让我们可以直接绘图。比如要生成字母验证码图片：
 
-```
+```python
 import Image, ImageDraw, ImageFont, ImageFilter
 import random
 
@@ -91,7 +89,6 @@ for t in range(4):
 # 模糊:
 image = image.filter(ImageFilter.BLUR)
 image.save('code.jpg', 'jpeg');
-
 ```
 
 我们用随机颜色填充背景，再画上文字，最后对图像进行模糊，得到验证码图片如下：
