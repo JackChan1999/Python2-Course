@@ -1,6 +1,6 @@
 Socket是网络编程的一个抽象概念。通常我们用一个Socket表示“打开了一个网络链接”，而打开一个Socket需要知道目标计算机的IP地址和端口号，再指定协议类型即可。
 
-### 客户端
+## 客户端
 
 大多数连接都是可靠的TCP连接。创建TCP连接时，主动发起连接的叫客户端，被动响应连接的叫服务器。
 
@@ -82,7 +82,7 @@ with open('sina.html', 'wb') as f:
 
 现在，只需要在浏览器中打开这个`sina.html`文件，就可以看到新浪的首页了。
 
-### 服务器
+## 服务器
 
 和客户端编程相比，服务器编程就要复杂一些。
 
@@ -173,7 +173,102 @@ s.close()
 
 需要注意的是，客户端程序运行完毕就退出了，而服务器程序会永远运行下去，必须按Ctrl+C退出程序。
 
-### 小结
+## socket原生网络库使用
+
+### 原始socket AIP
+
+```python
+#coding:utf-8
+
+from socket import *
+
+myhost = ''
+myport = 8080
+sockobj = socket(AF_INET, SOCK_STREAM)
+sockobj.bind((myhost, myport))
+sockobj.listen(128)
+while True:
+    connection, address = sockobj.accept()
+    print "connect by", address
+    while True:
+        data = connection.recv(1024)
+        if not data:
+            break
+        connection.send('echo' + data)
+    connection.close()
+```
+
+```python
+#coding:utf-8
+
+from SocketServer import TCPServer, BaseRequestHandler  
+import traceback  
+
+class MyBaseRequestHandlerr(BaseRequestHandler):  
+    """ 
+    #从BaseRequestHandler继承，并重写handle方法 
+    """  
+
+    def handle(self):  
+        #循环监听（读取）来自客户端的数据  
+        while True:  
+            #当客户端主动断开连接时，self.recv(1024)会抛出异常  
+            try:  
+                #一次读取1024字节,并去除两端的空白字符(包括空格,TAB,\r,\n)  
+                data = self.request.recv(1024).strip()  
+
+                #self.client_address是客户端的连接(host, port)的元组  
+                print "receive from (%r):%r" % (self.client_address, data)  
+
+                #转换成大写后写回(发生到)客户端  
+                self.request.sendall(data.upper()+'\n')  
+            except:  
+                traceback.print_exc()  
+                break  
+
+if __name__ == "__main__":  
+    #telnet 127.0.0.1 9999  
+    host = ""       #主机名，可以是ip,像localhost的主机名,或""  
+    port = 8080     #端口  
+    addr = (host, port)  
+
+    #购置TCPServer对象，  
+    server = TCPServer(addr, MyBaseRequestHandlerr)  
+    #启动服务监听  
+    server.serve_forever()  
+```
+
+### 多线程TCPserver
+
+```python
+#coding:utf-8
+
+from SocketServer import ThreadingTCPServer, StreamRequestHandler
+import traceback
+
+class MyStreamRequestHandlerr(StreamRequestHandler):
+    def handle(self):
+        while True:
+            try:
+                data = self.rfile.readline().strip()
+                print "receive from (%r):%r" % (self.client_address, data)
+                self.wfile.write(data.upper())
+            except:
+                traceback.print_exc()
+                break
+
+if __name__ == "__main__":
+    host = ""       #主机名，可以是ip,像localhost的主机名,或""
+    port = 8080     #端口
+    addr = (host, port)
+
+    #ThreadingTCPServer从ThreadingMixIn和TCPServer继承
+    #class ThreadingTCPServer(ThreadingMixIn, TCPServer): pass
+    server = ThreadingTCPServer(addr, MyStreamRequestHandlerr)
+    server.serve_forever()
+```
+
+## 小结
 
 用TCP协议进行Socket编程在Python中十分简单，对于客户端，要主动连接服务器的IP和指定端口，对于服务器，要首先监听指定端口，然后，对每一个新的连接，创建一个线程或进程来处理。通常，服务器程序会无限运行下去。
 
