@@ -28,7 +28,15 @@ python -m pip install --upgrade pip
 
 pip list 查看安装的模块
 
+### Sublime 
+
 Sublime 代码提示/补全插件 Anaconda
+
+Ctrl + ` 调出命令窗口
+
+Ctrl + shift + p 调出install package界面，输入install package
+
+### 乱码问题
 
 LookupError: unknown encoding: cp65001
 
