@@ -16,7 +16,7 @@
 
 一个简单的URL框架应该允许以@decorator方式直接把URL映射到函数上：
 
-```
+```python
 # 首页:
 @get('/')
 def index():
@@ -36,7 +36,7 @@ def show_user(id):
 
 其次，Web框架要支持URL拦截器，这样，我们就可以根据URL做权限检查：
 
-```
+```python
 @interceptor('/manage/')
 def check_manage_url(next):
     if current_user.isAdmin():
@@ -52,7 +52,7 @@ def check_manage_url(next):
 
 要统一模板的接口，函数可以返回`dict`并配合@view来渲染模板：
 
-```
+```python
 @view('index.html')
 @get('/')
 def index():
@@ -62,7 +62,7 @@ def index():
 
 如果需要从form表单或者URL的querystring获取用户输入的数据，就需要访问`request`对象，如果要设置特定的Content-Type、设置Cookie等，就需要访问`response`对象。`request`和`response`对象应该从一个唯一的ThreadLocal中获取：
 
-```
+```python
 @get('/test')
 def test():
     input_data = ctx.request.input()
@@ -74,14 +74,14 @@ def test():
 
 最后，如果需要重定向、或者返回一个HTTP错误码，最好的方法是直接抛出异常，例如，重定向到登陆页：
 
-```
+```python
 raise seeother('/signin')
 
 ```
 
 返回404错误：
 
-```
+```python
 raise notfound()
 
 ```
@@ -92,7 +92,7 @@ raise notfound()
 
 最基本的几个对象如下：
 
-```
+```python
 # transwarp/web.py
 
 # 全局ThreadLocal对象：
@@ -180,7 +180,7 @@ class Jinja2TemplateEngine(TemplateEngine):
 
 设计`WSGIApplication`要充分考虑开发模式（Development Mode）和产品模式（Production Mode）的区分。在产品模式下，`WSGIApplication`需要直接提供WSGI接口给服务器，让服务器调用该接口，而在开发模式下，我们更希望能通过`app.run()`直接启动服务器进行开发调试：
 
-```
+```python
 wsgi = WSGIApplication()
 if __name__ == '__main__':
     wsgi.run()
@@ -191,7 +191,7 @@ else:
 
 因此，`WSGIApplication`定义如下：
 
-```
+```python
 class WSGIApplication(object):
     def __init__(self, document_root=None, **kw):
         pass

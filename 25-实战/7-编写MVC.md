@@ -2,7 +2,7 @@
 
 通过Web框架的@decorator和ORM框架的Model支持，可以很容易地编写一个处理首页URL的函数：
 
-```
+```python
 # urls.py
 from transwarp.web import get, view
 from models import User, Blog, Comment
@@ -17,7 +17,7 @@ def test_users():
 
 `@view`指定的模板文件是`test_users.html`，所以我们在模板的根目录`templates`下创建`test_users.html`：
 
-```
+```html
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,7 +36,7 @@ def test_users():
 
 接下来，我们创建一个Web App的启动文件`wsgiapp.py`，负责初始化数据库、初始化Web框架，然后加载`urls.py`，最后启动Web服务：
 
-```
+```python
 # wsgiapp.py
 import logging; logging.basicConfig(level=logging.INFO)
 import os

@@ -1,13 +1,13 @@
 有了db模块，操作数据库直接写SQL就很方便。但是，我们还缺少ORM。如果有了ORM，就可以用类似这样的语句获取User对象：
 
-```
+```python
 user = User.get('123')
 
 ```
 
 而不是写SQL然后再转换成User对象：
 
-```
+```python
 u = db.select_one('select * from users where id=?', '123')
 user = User(**u)
 
@@ -21,7 +21,7 @@ user = User(**u)
 
 我们先考虑如何定义一个User对象，然后把数据库表`users`和它关联起来。
 
-```
+```python
 from transwarp.orm import Model, StringField, IntegerField
 
 class User(Model):
@@ -33,7 +33,7 @@ class User(Model):
 
 注意到定义在`User`类中的`__table__`、`id`和`name`是类的属性，不是实例的属性。所以，在类级别上定义的属性用来描述`User`对象和表的映射关系，而实例属性必须通过`__init__()`方法去初始化，所以两者互不干扰：
 
-```
+```python
 # 创建实例:
 user = User(id=123, name='Michael')
 # 存入数据库:
@@ -47,7 +47,7 @@ user.insert()
 
 首先要定义的是所有ORM映射的基类`Model`：
 
-```
+```python
 class Model(dict):
     __metaclass__ = ModelMetaclass
 
@@ -67,7 +67,7 @@ class Model(dict):
 
 `Model`从`dict`继承，所以具备所有`dict`的功能，同时又实现了特殊方法`__getattr__()`和`__setattr__()`，所以又可以像引用普通字段那样写：
 
-```
+```python
 >>> user['id']
 123
 >>> user.id
@@ -77,7 +77,7 @@ class Model(dict):
 
 `Model`只是一个基类，如何将具体的子类如`User`的映射信息读取出来呢？答案就是通过metaclass：`ModelMetaclass`：
 
-```
+```python
 class ModelMetaclass(type):
     def __new__(cls, name, bases, attrs):
         mapping = ... # 读取cls的Field字段
@@ -95,7 +95,7 @@ class ModelMetaclass(type):
 
 然后，我们往`Model`类添加class方法，就可以让所有子类调用class方法：
 
-```
+```python
 class Model(dict):
 
     ...
@@ -109,14 +109,14 @@ class Model(dict):
 
 `User`类就可以通过类方法实现主键查找：
 
-```
+```python
 user = User.get('123')
 
 ```
 
 往`Model`类添加实例方法，就可以让所有子类调用实例方法：
 
-```
+```python
 class Model(dict):
 
     ...
@@ -132,7 +132,7 @@ class Model(dict):
 
 这样，就可以把一个`User`实例存入数据库：
 
-```
+```python
 user = User(id=123, name='Michael')
 user.insert()
 

@@ -1,6 +1,6 @@
 有了ORM，我们就可以把Web App需要的3个表用`Model`表示出来：
 
-```
+```python
 import time, uuid
 
 from transwarp.db import next_id
@@ -52,7 +52,7 @@ class Comment(Model):
 
 如果表的数量很少，可以手写创建表的SQL脚本：
 
-```
+```sql
 -- schema.sql
 
 drop database if exists awesome;
@@ -118,7 +118,7 @@ $ mysql -u root -p < schema.sql
 
 接下来，就可以真正开始编写代码操作对象了。比如，对于`User`对象，我们就可以做如下操作：
 
-```
+```python
 # test_db.py
 
 from models import User, Blog, Comment

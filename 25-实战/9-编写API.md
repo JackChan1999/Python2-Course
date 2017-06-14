@@ -12,7 +12,7 @@ REST就是一种设计API的模式。最常用的数据格式是JSON。由于JSO
 
 一个API也是一个URL的处理函数，我们希望能直接通过一个`@api`来把函数变成JSON格式的REST API，这样，获取注册用户可以用一个API实现如下：
 
-```
+```python
 @api
 @get('/api/users')
 def api_get_users():
@@ -28,7 +28,7 @@ def api_get_users():
 
 新建一个`apis.py`，编写`@api`负责把函数的返回结果序列化为JSON：
 
-```
+```python
 def api(func):
     @functools.wraps(func)
     def _wrapper(*args, **kw):
