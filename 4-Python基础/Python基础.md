@@ -47,3 +47,5 @@ Java是静态语言
 老司机谈python语法，一张图看明白python
 
 ![](img/python语法.png)
+
+![](img/python基础知识点.png)
