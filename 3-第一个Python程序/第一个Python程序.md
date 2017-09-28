@@ -26,4 +26,4 @@ hello, world
 
 在Python交互式命令行下，可以直接输入代码，然后执行，并立刻得到结果。
 
-![simpson-coding](http://www.liaoxuefeng.com/files/attachments/0013869166904369699524b442c4c7e92acf45f9e0512d9000/0)
+![simpson-coding](images/第一个Python程序.jpg)
