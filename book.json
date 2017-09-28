@@ -1,11 +1,10 @@
 {
     "author": "AllenIverson",
     "description": "Python开发教程",
-    "gitbook": "4.0.0-alpha.6",
+    "gitbook": "3.2.3",
     "language": "zh-hans",
     "title": "Python开发教程",
     "pdf": {
         "fontFamily": "等线"
-    },
-    "plugins": ["mathjax"]
+    }
 }
