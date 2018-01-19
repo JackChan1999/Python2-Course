@@ -14,7 +14,7 @@
 
 查看系统版本的办法是点击左上角的苹果图标，选择“关于本机”：
 
-![osx-10.9](http://www.liaoxuefeng.com/files/attachments/001386815626411687cd54d188b46aab2f737c81fe4bd3c000/0)
+![osx-10.9](images/安装Python_01.png)
 
 ## 在Linux上安装Python
 
@@ -28,7 +28,7 @@
 
 然后，运行下载的MSI安装包，在选择安装组件的一步时，勾上所有的组件：
 
-![install-python-windows](http://www.liaoxuefeng.com/files/attachments/0014222393965540081463bf8a9499094bdda24b6fdf2d6000)
+![install-python-windows](images/安装Python_02.png)
 
 特别要注意选上`pip`和`Add python.exe to Path`，然后一路点“Next”即可完成安装。
 
@@ -36,7 +36,7 @@
 
 情况一：
 
-![python-command](http://www.liaoxuefeng.com/files/attachments/0013868165417047ec57a2e466e4861a525d106e0b7e6b6000/0)
+![python-command](images/安装Python_03.png)
 
 看到上面的画面，就说明Python安装成功！
 
