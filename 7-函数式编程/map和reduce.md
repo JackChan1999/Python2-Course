@@ -6,7 +6,7 @@ Python内建了`map()`和`reduce()`函数。
 
 举例说明，比如我们有一个函数f(x)=x<sub>2</sub>，要把这个函数作用在一个list `[1, 2, 3, 4, 5, 6, 7, 8, 9]`上，就可以用`map()`实现如下：
 
-![map](http://www.liaoxuefeng.com/files/attachments/0013879622109990efbf9d781704b02994ba96765595f56000/0)
+![map](img/map.png)
 
 现在，我们用Python代码实现：
 
